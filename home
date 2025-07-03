@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVETÁR – Informatikai Vezetők Társasága</title>
+    <style>
+        :root {
+            --ivetar-blue: #0057b8;
+            --ivetar-green: #228B22;
+            --ivetar-bg: #f8f9fa;
+            --ivetar-dark: #222;
+            --ivetar-white: #fff;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--ivetar-bg);
+            color: var(--ivetar-dark);
+            transition: background 0.4s, color 0.4s;
+        }
+        body.dark-mode {
+            background: #181c24;
+            color: #e0e6ef;
+        }
+        header {
+            background: var(--ivetar-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 24px 0 16px 0;
+            text-align: center;
+            position: relative;
+        }
+        .logo {
+            width: 120px;
+            margin-bottom: 12px;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.9);
+            animation: logoIn 1.2s cubic-bezier(.68,-0.55,.27,1.55) 0.2s forwards;
+        }
+        @keyframes logoIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        h1 {
+            color: var(--ivetar-blue);
+            font-size: 2.2rem;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+        }
+        .highlight-green {
+            color: var(--ivetar-green);
+            transition: color 0.3s;
+        }
+        .highlight-green:hover {
+            color: #32CD32;
+            text-shadow: 0 2px 8px rgba(50,205,50,0.15);
+        }
+        .slogan {
+            font-style: italic;
+            color: var(--ivetar-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeIn 1.2s 1s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .dark-toggle {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            background: var(--ivetar-blue);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .dark-toggle:hover {
+            background: var(--ivetar-green);
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: var(--ivetar-white);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            padding: 32px 24px;
+        }
+        section {
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            color: var(--ivetar-blue);
+            margin-top: 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: var(--ivetar-green);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #32CD32;
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            margin: 40px 0 16px 0;
+        }
+        body.dark-mode header,
+        body.dark-mode main {
+            background: #232a36;
+            color: #e0e6ef;
+        }
+        body.dark-mode .slogan {
+            color: #93C572;
+        }
+        @media (max-width: 600px) {
+            main {
+                padding: 16px 6px;
+            }
+            .logo {
+                width: 80px;
+            }
+            .dark-toggle {
+                right: 8px;
+                top: 8px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Sötét mód</button>
+        <!-- Logó SVG (példa, cserélhető saját SVG-re vagy képre) -->
+        <svg class="logo" viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 20C50 20 20 60 20 110c0 60 80 120 80 120s80-60 80-120c0-50-30-90-80-90z" stroke="#0057b8" stroke-width="10" fill="#fff"/>
+            <circle cx="100" cy="70" r="15" fill="#228B22"/>
+            <circle cx="60" cy="110" r="12" fill="#228B22"/>
+            <circle cx="140" cy="110" r="12" fill="#228B22"/>
+            <rect x="92" y="85" width="16" height="60" rx="8" fill="#0057b8"/>
+            <rect x="52" y="120" width="16" height="40" rx="8" fill="#0057b8"/>
+            <rect x="132" y="120" width="16" height="40" rx="8" fill="#0057b8"/>
+            <text x="100" y="45" text-anchor="middle" font-size="22" fill="#228B22" font-family="Segoe UI, Arial, sans-serif" font-weight="bold">IVETÁR</text>
+        </svg>
+        <h1>
+            <span class="highlight-green">INFORMATIKAI</span> VEZETŐK <span class="highlight-green">TÁRSASÁGA</span>
+        </h1>
+        <div class="slogan">"Közösség. Tudás. Vezetés."</div>
+    </header>
+    <main>
+        <section>
+            <h2>Rólunk</h2>
+            <p>
+                Az <strong>IVETÁR</strong> – Informatikai Vezetők Társasága – egy szakmai közösség, amely összefogja a hazai IT-vezetőket, CIO-kat, CTO-kat és informatikai döntéshozókat. Célunk a tudásmegosztás, a szakmai fejlődés támogatása és a vezetői közösség erősítése.
+            </p>
+        </section>
+        <section>
+            <h2>Fő értékeink</h2>
+            <ul>
+                <li><strong>Közösség:</strong> Együttműködés, kapcsolatépítés, szakmai támogatás.</li>
+                <li><strong>Tudás:</strong> Tapasztalatcsere, legjobb gyakorlatok, folyamatos tanulás.</li>
+                <li><strong>Vezetés:</strong> Innováció, stratégiai gondolkodás, felelős döntéshozatal.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Kapcsolat</h2>
+            <p>
+                Érdeklődés vagy csatlakozás esetén írj nekünk: <a href="mailto:info@ivetar.hu">info@ivetar.hu</a>
+            </p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 IVETÁR – Informatikai Vezetők Társasága
+    </footer>
+    <script>
+        // Sötét mód váltás
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        // Szekciók animált megjelenítése scrollra
+        function revealSections() {
+            const sections = document.querySelectorAll('main section');
+            const trigger = window.innerHeight * 0.85;
+            sections.forEach(sec => {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top < trigger) {
+                    sec.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
+    </script>
+</body>
+</html>
+    
